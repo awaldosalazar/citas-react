@@ -1,12 +1,23 @@
+import swal from 'sweetalert';
 const Patient = ({patient, setPatient, deletePatient}) => {    
     const { nombre, propietario, email, fecha, sintomas, id  } = patient;
     
     const handleDelete = () =>{
-      const response = confirm('Deseas eliminar ese paciente?');
-
-      if(response) {
-        deletePatient(id);
-      }
+      swal({
+        title: "Estas seguro?",
+        text: "El siguiente registro se eliminara por completo",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Perfecto! Tu registro fue eliminado!", {
+            icon: "success",
+          });
+          deletePatient(id);
+        } 
+      });
     }
   return (
     <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl hover:shadow-lg">
