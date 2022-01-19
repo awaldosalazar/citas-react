@@ -20,7 +20,7 @@ const Formulary = ({ patients, setPatients, patient, setPatient }) => {
             setSintomas(sintomas);
             return;
         }
-        console.log('esperando paciente a modificar...');
+        // console.log('esperando paciente a modificar...');
     }, [patient])
 
     const generarId = () => {
@@ -49,8 +49,6 @@ const Formulary = ({ patients, setPatients, patient, setPatient }) => {
         if(id) {
             // Validacion para editar registro
             objectPatient.id = id;
-            console.log(objectPatient);
-            console.log(patient);
 
             const patientsUpdates = patients.map(patientState =>  patientState.id === id ? objectPatient : patientState);
             setPatients(patientsUpdates);
